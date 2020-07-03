@@ -2,7 +2,10 @@
 
 import pandas as pd
 
+import streamlit as st  # pylint: disable=import-error
 
+
+@st.cache
 def load_data(path):
     """Loads the dataset from a filepath."""
     return (
