@@ -12,7 +12,7 @@ def load_data(path):
                 "Total Results as of Date": "date",
                 "Cases": "cumulative_cases",
                 "Deaths": "cumulative_deaths",
-                "Recovered": "cumulative_recovered",
+                "Recovered": "cumulative_recoveries",
             }
         )
         .assign(date=lambda df: pd.to_datetime(df["date"]))
