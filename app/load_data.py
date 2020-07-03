@@ -21,9 +21,3 @@ def load_data(path):
         .assign(date=lambda df: pd.to_datetime(df["date"]))
         .set_index("date")
     )
-
-
-if __name__ == "__main__":
-    FILEPATH = "data.json"
-    df = load_data(FILEPATH)
-    print(df)
