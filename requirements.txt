@@ -13,5 +13,6 @@
 fbprophet==0.6
 matplotlib==3.2.2
 pandas==1.0.5
+plotly==4.8.2
 pystan==2.19.1.1
 streamlit==0.62.1

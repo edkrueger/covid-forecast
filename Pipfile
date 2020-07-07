@@ -15,6 +15,7 @@ pandas = "==1.0.5"
 matplotlib = "==3.2.2"
 pystan = "==2.19.1.1"
 fbprophet = "==0.6"
+plotly = "==4.8.2"
 
 [requires]
 python_version = "3.7"
