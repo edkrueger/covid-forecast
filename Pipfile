@@ -13,6 +13,8 @@ pipenv-to-requirements = "*"
 streamlit = "==0.62.1"
 pandas = "==1.0.5"
 matplotlib = "==3.2.2"
+pystan = "==2.19.1.1"
+fbprophet = "==0.6"
 
 [requires]
 python_version = "3.7"
