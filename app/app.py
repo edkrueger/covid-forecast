@@ -17,37 +17,44 @@ DEATHS = "Cumulative Deaths"
 RECOVERIES = "Cumulative Recoveries"
 
 
-def series_lookup(selection):
-    """Looks up the name in the dataset from the name on the selector."""
-    series_lookup_dict = {
-        CASES: "cumulative_cases",
-        DEATHS: "cumulative_deaths",
-        RECOVERIES: "cumulative_recoveries",
-    }
-
-    return series_lookup_dict[selection]
-
-
 def make_forecast(selection):
     """Takes a name from the selection and makes a forecast plot."""
 
-    series_name = series_lookup(selection)
+    if selection == CASES:
+
+        cumulative_series_name = "cumulative_cases"
+        title = "Daily Cases"
+        x_label = "Cases"
+
+    if selection == DEATHS:
+
+        cumulative_series_name = "cumulative_deaths"
+        title = "Daily Deaths"
+        x_label = "Deaths"
+
+    if selection == RECOVERIES:
+
+        cumulative_series_name = "cumulative_recoveries"
+        title = "Daily Recoveries"
+        x_label = "Recoveries"
 
     prophet_df = (
-        df[series_name]
+        df[cumulative_series_name]
+        .diff()
+        .dropna()
         .to_frame()
         .reset_index()
-        .rename(columns={"date": "ds", series_name: "y"})
+        .rename(columns={"date": "ds", cumulative_series_name: "y"})
     )
 
     model = Prophet()
     model.fit(prophet_df)
-    future = model.make_future_dataframe(periods=360)
+    future = model.make_future_dataframe(periods=90)
     forecast = model.predict(future)
 
     fig = plot_plotly(model, forecast)
     fig.update_layout(
-        title=selection, yaxis_title=selection, xaxis_title="Date",
+        title=title, yaxis_title=x_label, xaxis_title="Date",
     )
 
     return fig
