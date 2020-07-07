@@ -17,6 +17,7 @@ DEATHS = "Cumulative Deaths"
 RECOVERIES = "Cumulative Recoveries"
 
 
+@st.cache(allow_output_mutation=True)
 def make_forecast(selection):
     """Takes a name from the selection and makes a forecast plot."""
 
