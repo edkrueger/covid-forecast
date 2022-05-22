@@ -79,6 +79,7 @@ if selected_series == ALL:
     plt.plot(recoveries_series.index, recoveries_series.values, label=RECOVERIES)
     plt.legend()
 
+    st.set_option('deprecation.showPyplotGlobalUse', False)
     st.pyplot()
 
 else:
